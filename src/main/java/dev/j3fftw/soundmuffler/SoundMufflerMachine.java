@@ -2,10 +2,10 @@ package dev.j3fftw.soundmuffler;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunBlockHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.UnregisterReason;
@@ -27,13 +27,13 @@ public class SoundMufflerMachine extends SlimefunItem implements EnergyNetCompon
 
     public static final int DISTANCE = 8;
     private static final int[] border = {1, 2, 3, 4, 5, 6, 7};
-    private static final String name = "&3Sound Muffler";
+    private static final String name = "&3消音裝置";
     private static final String id = "SOUND_MUFFLER";
 
     public SoundMufflerMachine() {
         super(SoundMuffler.SOUND_MUFFLER,
             new SlimefunItemStack(id, Material.WHITE_CONCRETE, name,
-                "", "&7Muffles all sound in a", "&78 block radius", "", "&e\u26A1 Requires power to use"
+                "", "&7吸收半徑8格內的聲音", "", "&e\u26A1 消耗電力運行"
             ),
             id,
             RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -65,13 +65,13 @@ public class SoundMufflerMachine extends SlimefunItem implements EnergyNetCompon
                 }
 
                 menu.replaceExistingItem(8, new CustomItem((enabled ? Material.REDSTONE : Material.GUNPOWDER),
-                    "&7Enabled: " + (enabled ? "&a\u2714" : "&4\u2718"), "", "&e> Click to enable this Machine"));
+                    "&7啟用狀態: " + (enabled ? "&a\u2714" : "&4\u2718"), "", "&e> 點我更改狀態"));
                 menu.replaceExistingItem(0, new CustomItem(Material.PAPER,
-                    "&eVolume: &b" + volume,
-                    "&7Valid value range: 0-100",
-                    "&7L-click: -10",
-                    "&7R-click: +10",
-                    "&7With shift held: +/-1"));
+                    "&e音量: &b" + volume,
+                    "&7可用音量範圍: 0-100",
+                    "&7左鍵: -10",
+                    "&7右鍵: +10",
+                    "&7加按住 Shift: +/-1"));
 
                 final int finalVolume = volume;
                 menu.addMenuClickHandler(0, (p, arg1, arg2, arg3) -> {
@@ -127,7 +127,6 @@ public class SoundMufflerMachine extends SlimefunItem implements EnergyNetCompon
 
             @Override
             public boolean onBreak(Player p, Block b, SlimefunItem item, UnregisterReason reason) {
-                BlockStorage.clearBlockInfo(b);
                 return true;
             }
         });

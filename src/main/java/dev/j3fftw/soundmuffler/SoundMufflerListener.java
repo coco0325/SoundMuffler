@@ -15,6 +15,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Objects;
+
 public class SoundMufflerListener extends PacketAdapter implements Listener {
 
     public SoundMufflerListener(Plugin plugin) {
@@ -66,7 +68,7 @@ public class SoundMufflerListener extends PacketAdapter implements Listener {
         for (int x = loc.getBlockX() - dis; x < loc.getBlockX() + dis; x++) {
             for (int y = loc.getBlockY() - dis; y < loc.getBlockY() + dis; y++) {
                 for (int z = loc.getBlockZ() - dis; z < loc.getBlockZ() + dis; z++) {
-                    if (!loc.getWorld().isChunkLoaded(x >> 4, z >> 4))
+                    if (!Objects.requireNonNull(loc.getWorld()).isChunkLoaded(x >> 4, z >> 4))
                         continue;
                     Block b = loc.getWorld().getBlockAt(x, y, z);
                     if (b.getType() == Material.WHITE_CONCRETE && BlockStorage.hasBlockInfo(b)) {

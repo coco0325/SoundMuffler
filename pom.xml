@@ -6,7 +6,7 @@
 
     <groupId>dev.j3fftw</groupId>
     <artifactId>SoundMuffler</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <repositories>
         <repository>
@@ -25,16 +25,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
+            <groupId>com.destroystokyo.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.16.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-15</version>
-            <scope>provided</scope>
+            <version>4.3</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Coco/Documents/JAVA Projects/Slimefun/target/Slimefun v4.3.jar</systemPath>
             <exclusions>
                 <exclusion>
                     <groupId>io.github.thebusybiscuit</groupId>
@@ -55,7 +56,7 @@
         <dependency>
             <groupId>com.github.dmulloy2</groupId>
             <artifactId>ProtocolLib</artifactId>
-            <version>4.5.0</version>
+            <version>4.5.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
